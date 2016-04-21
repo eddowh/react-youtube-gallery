@@ -33,6 +33,11 @@ module.exports = {
             AppActions.receiveVideos(videos);
         });
 
+    },
+
+    removeVideo: function(videoId) {
+        this.firebaseRef = new Firebase(collections_urls.videos + "/" + videoId);
+        this.firebaseRef.remove();
     }
 
 }

@@ -24,6 +24,11 @@ var AppStore = assign({}, EventEmitter.prototype, {
         _videos = videos
     },
 
+    removeVideo: function(videoId) {
+        var index = _videos.findIndex(x => x.id === videoId);
+        _videos.splice(index, 1);
+    },
+
     emitChange: function() {
         this.emit(CHANGE_EVENT);
     },
@@ -61,8 +66,20 @@ AppDispatcher.register(function(payload) {
         case AppConstants.RECEIVE_VIDEOS:
             console.log('Receiving videos ...');
 
-            // Store Save
             AppStore.setVideos(action.videos);
+
+            // Emit change
+            AppStore.emit(CHANGE_EVENT);
+            break;
+
+        case AppConstants.REMOVE_VIDEO:
+            console.log('Removing video ...');
+
+            // Store Remove
+            AppStore.removeVideo(action.videoId);
+
+            // API Remove
+            AppAPI.removeVideo(action.videoId);
 
             // Emit change
             AppStore.emit(CHANGE_EVENT);
