@@ -8,6 +8,13 @@ var AppActions = {
             actionType: AppConstants.SAVE_VIDEO,
             video: video
         });
+    },
+
+    receiveVideos: function(videos) {
+        AppDispatcher.handleViewAction({
+            actionType: AppConstants.RECEIVE_VIDEOS,
+            videos: videos
+        });
     }
 
 }

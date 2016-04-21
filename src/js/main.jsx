@@ -5,6 +5,9 @@ var App = require('./components/App.jsx');
 var AppAPI = require('./utils/appAPI');
 
 
+AppAPI.getVideos();
+
+
 ReactDOM.render(
     <App />,
     document.getElementById('app')
