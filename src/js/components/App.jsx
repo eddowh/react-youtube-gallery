@@ -10,7 +10,7 @@ var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStore');
 
 // Components
-// var SubComponent = require('./SubComponent.jsx');
+var AddForm = require('./AddForm.jsx');
 
 
 function getAppState() {
@@ -42,7 +42,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                Hello World!
+                <AddForm />
             </div>
         );
     }
