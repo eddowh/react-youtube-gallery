@@ -7,20 +7,21 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var CHANGE_EVENT = 'change';
 
-// define where to store your fetched data
-// initialize as empty
-// var obj = [] | {} | ''
+var _videos = [];
 
 
 var AppStore = assign({}, EventEmitter.prototype, {
 
-    // define getter and setter methods
-    setObj: function(argument) {
-        return;
+    saveVideo: function(video) {
+        _videos.push(video);
     },
 
-    getObj: function() {
-        return;
+    getVideos: function() {
+        return _videos;
+    },
+
+    setVideos: function(videos) {
+        _videos = videos
     },
 
     emitChange: function() {
@@ -44,8 +45,18 @@ AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
 
-        // case AppConstants.A_CONSTANT:
-        // ...
+        case AppConstants.SAVE_VIDEO:
+            console.log('Saving video ...');
+
+            // Store Save
+            AppStore.saveVideo(action.video);
+
+            // API Save
+            AppAPI.saveVideo(action.video);
+
+            // Emit change
+            AppStore.emit(CHANGE_EVENT);
+            break;
 
     }
 

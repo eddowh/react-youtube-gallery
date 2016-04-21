@@ -1,3 +1,3 @@
 module.exports = {
-    CONSTANT: 'CONSTANT'
+    SAVE_VIDEO: 'SAVE_VIDEO'
 }

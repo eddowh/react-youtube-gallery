@@ -21,7 +21,6 @@ var AddForm = React.createClass({
             description: this.refs.description.value.trim()
         }
 
-        // TODO
         AppActions.saveVideo(video);
     },
 

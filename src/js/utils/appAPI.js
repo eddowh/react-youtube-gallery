@@ -1,8 +1,18 @@
+// Flux elements
 var AppActions = require('../actions/AppActions');
 
-// list of actions that are available
-// i.e. `searchMovies(movie)` for a movie finding app
-// name of the function should preferably be identical to those defined in `AppActions`
+// Third party modules
+var Firebase = require('firebase');
+
+// API constants
+base_firebase_url = "https://youtube-gallery-dev0.firebaseIO.com";
+
+
 module.exports = {
+
+    saveVideo: function(video) {
+        this.firebaseRef = new Firebase(base_firebase_url + "/" + "videos");
+        this.firebaseRef.push(video);
+    }
 
 }
